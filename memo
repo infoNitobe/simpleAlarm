@@ -1,0 +1,20 @@
+---
+common
+---
+todo:add test code
+    ・カウントダウンしていることがわかるようにする。
+
+---
+alarm.py
+---
+todo: thread修正。タイマー開始後にウィンドウを閉じると、ターミナルに入力できなくなる。
+    スレッドが正常に終了していない？
+
+---
+gui.py
+---
+todo: 1, 2を配列にできないか？
+    def create_widgets(self):
+        frame1 = tk.Frame(self.master, background="#ece")
+        self.en1 = tk.Entry(frame1, text="entry1")
+        self.en1.grid(row=0, column=0)

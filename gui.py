@@ -1,5 +1,6 @@
 import tkinter as tk
 import alarm
+import threading
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -10,10 +11,8 @@ class Application(tk.Frame):
         self.pack()
         self.create_widgets()
 
-        #
         self.Alarms = [alarm.alarm() for i in range(2)]
 
-    #todo: 1, 2を配列にできないか？
     def create_widgets(self):
         frame1 = tk.Frame(self.master, background="#ece")
         self.en1 = tk.Entry(frame1, text="entry1")
@@ -38,11 +37,11 @@ class Application(tk.Frame):
             if id == 0:
                 mozi = self.en1.get()
                 print(mozi)
-                #todo:マルチスレッドにする。
-                self.Alarms[id].set_alarm(id, mozi)
             elif id == 1:
                 mozi = self.en2.get()
-                self.Alarms[id].set_alarm(id, mozi)
+                print(mozi)
+            thread = threading.Thread(target=self.Alarms[id].set_alarm, args=(id, mozi), daemon=True)
+            thread.start()
         else:
             pass
 
